@@ -9,10 +9,19 @@ public class Queuemanager : MonoBehaviour {
 	private Transform trs;
 	private Queue<GameObject> generalqueue;
 	public GameObject bubble; 
+	public String[] prequeue;
 	
 	void Start(){
 	trs = GetComponent<Transform>();
 	generalqueue = new Queue<GameObject>(); 
+	
+		if(prequeue.Length > 0)
+		{
+			foreach (String s in prequeue)
+			{
+				qelement(s);
+			}
+		}
 	}
 	
 	private float goal;
@@ -24,9 +33,10 @@ public class Queuemanager : MonoBehaviour {
 		Text thename = obj.GetComponentInChildren<Text>();
 		thename.text = name;
 		obj.transform.SetParent(trs);
+		if(trs == null){Debug.Log("no transform");}
 		generalqueue.Enqueue(obj); 
 		Transform trans = obj.GetComponent<Transform>();
-		trans.Translate(0, 250 -50 * generalqueue.Count , 0);
+		trans.Translate(trs.position.x, 250 -50 * generalqueue.Count , 0);
 	}
 	
 	//called when someone wants to exit
