@@ -21,9 +21,12 @@ public class Queuemanager : MonoBehaviour {
 	public void qelement(String name)
 	{		
 		GameObject obj = Instantiate(bubble);
+		Text thename = obj.GetComponentInChildren<Text>();
+		thename.text = name;
 		obj.transform.SetParent(trs);
 		generalqueue.Enqueue(obj); 
-		//writeResults();
+		Transform trans = obj.GetComponent<Transform>();
+		trans.Translate(0, 250 -50 * generalqueue.Count , 0);
 	}
 	
 	//called when someone wants to exit
@@ -37,15 +40,16 @@ public class Queuemanager : MonoBehaviour {
 		}
 	}
 	
+	
+	
 	private void writeResults()
 	{
-		int indx = 0;
 		foreach (GameObject name in generalqueue)
 		{
-			goal = 100 - 50*indx; 
 			Transform trans = name.GetComponent<Transform>();
-			trans.Translate(0, goal, 0);
-			indx++;
+			//Vector3 pos = trans.position + new Vector3(0.0f, 50.0f, 0.0f); 
+			trans.Translate( new Vector3(0.0f, 50.0f, 0.0f));
+		
 		}
 	}
 	
