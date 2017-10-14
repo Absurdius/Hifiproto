@@ -17,10 +17,11 @@ public class Attendeemanager : MonoBehaviour {
 	*/
 	private int state = 0; 
 	private float colorvalue = 0; 
+	//private RawImage background;
 	
 	// Use this for initialization
 	void Start () {
-		background = GetComponent<RawImage>();
+		background = GetComponentInChildren<RawImage>();
 		background.color = new Color(1, 1, 1, 1);
 	}
 	
@@ -57,4 +58,6 @@ public class Attendeemanager : MonoBehaviour {
 		colorvalue = 0;
 		state = 2; 
 	}
+	
+	
 }
