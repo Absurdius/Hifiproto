@@ -50,6 +50,8 @@ public class Queuemanager : MonoBehaviour {
 		Destroy(first);
 		writeResults();
 		}
+		//might look weird
+		//but queue can be empty after destroy operation
 		if(generalqueue.Count != 0)
 		{
 			highlight(generalqueue.Peek());
